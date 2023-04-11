@@ -1,7 +1,51 @@
 <div class="cotainer mt-2">
-    <div class="row row-cols-1 row-cols-md-2">
-        <div class="col" *ngFor="let item of superHeroes">
-            {{item.name}}
-        </div>
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col" *ngFor="let item of superHeroes">
+      {{ item.name }}
     </div>
+  </div>
+</div>
+
+<div class="add-product">
+  <h1>Add New Product</h1>
+  <p class="message-p">{{ message }}</p>
+  <form
+    #addProduct="ngForm"
+    (ngSubmit)="addData(addProduct.value)"
+    class="common-form"
+  >
+    <input
+      class="form-input"
+      type="text"
+      ngModel
+      name="name"
+      placeholder="Enter Product Name"
+    />
+
+    <input
+      class="form-input"
+      type="text"
+      ngModel
+      name="powers"
+      placeholder="Enter powers"
+    />
+
+    <input
+      class="form-input"
+      type="text"
+      ngModel
+      name="franchise"
+      placeholder="Enter franchise name"
+    />
+
+    <input
+      class="form-input"
+      type="text"
+      ngModel
+      name="imageUrl"
+      placeholder="Enter image url"
+    />
+
+    <button class="form-button">Add Product</button>
+  </form>
 </div>

@@ -11,4 +11,7 @@ export class SuperHeroesService {
   get(){
     return this.http.get<SuperHero[]>("http://localhost:3000/super-heroes")
   }
+  create(data:SuperHero){
+    return this.http.post("http://localhost:3000/super-heroes",data);
+  }
 }

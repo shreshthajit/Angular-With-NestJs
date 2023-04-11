@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookModule } from './book/book.module';
 import { SuperHeroesModule } from './super-heroes/super-heroes.module';
+import { SellerModule } from './seller/seller.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { SuperHeroesModule } from './super-heroes/super-heroes.module';
     BookModule,
     UserModule,
     SuperHeroesModule,
+    SellerModule,
   ],
   controllers: [],
   providers: [],

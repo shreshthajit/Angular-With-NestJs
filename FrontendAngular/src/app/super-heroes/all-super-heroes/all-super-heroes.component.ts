@@ -11,6 +11,7 @@ export class AllSuperHeroesComponent implements OnInit {
   constructor(private superHeroService: SuperHeroesService) {}
 
   superHeroes:SuperHero[] = [];
+  message: string | undefined;
 
   ngOnInit(): void {
     this.getAll();
@@ -21,5 +22,10 @@ export class AllSuperHeroesComponent implements OnInit {
        console.log(data);
        this.superHeroes = data;
     });
+  }
+  addData(data:SuperHero){
+    this.superHeroService.create(data).subscribe((result)=>{
+      this.message = "Product is successfully added";
+    })
   }
 }

@@ -1,19 +1,5 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
-  <div class="container-fluid">
-    <div class="side-nav-button p-1 text-light">
-      <i class="bx bx-menu"></i>
-    </div>
+<div class="container">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
 
-    <a class="navbar-brand px-4">Home Expense Manager</a>
-
-    <div class="navbar-collapse">
-      <div class="spacer"></div>
-
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Seach" />
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-<router-outlet></router-outlet>
+</div>
