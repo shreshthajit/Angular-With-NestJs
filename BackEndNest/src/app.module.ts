@@ -7,6 +7,8 @@ import { BookModule } from './book/book.module';
 import { SuperHeroesModule } from './super-heroes/super-heroes.module';
 import { SellerModule } from './seller/seller.module';
 import { SellerProductModule } from './seller-product/seller-product.module';
+import { UserController } from './user/user.controller';
+import { UserService } from './user/user.service';
 
 @Module({
   imports: [

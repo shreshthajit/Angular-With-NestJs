@@ -22,6 +22,9 @@ export class SellerProduct {
 
   @Prop()
   imageUrl: string;
+
+  @Prop()
+  id: number;
 }
 
 export const SellerProductSchema = SchemaFactory.createForClass(SellerProduct);

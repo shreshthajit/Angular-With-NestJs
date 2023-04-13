@@ -22,6 +22,7 @@ export class SellerProductService {
     model.category = createProduct.category;
     model.description = createProduct.description;
     model.imageUrl = createProduct.imageUrl;
+    model.id = createProduct.id;
 
     return model.save();
   }

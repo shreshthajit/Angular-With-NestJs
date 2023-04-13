@@ -5,4 +5,5 @@ export class SellerProductDto {
   category: string;
   description: string;
   imageUrl: string;
+  id: number;
 }

@@ -1,42 +1,20 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  RequestMethod,
-} from '@nestjs/common';
-import { UsersController } from './controller/users/users.controller';
-import { UsersService } from './services/users/users.service';
-import { ExampleMiddleware } from './middleware/example/example.middleware';
-import { AnotherMiddleware } from './middleware/another/another.middleware';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { userSignupSchema } from './schema/user-signup.schema';
+import { UserService } from './user.service';
+import { UserController } from './user.controller';
 
 @Module({
-  controllers: [UsersController],
-  providers: [UsersService],
+  imports: [
+    MongooseModule.forFeature([
+      {
+        name: 'SignUpInfo',
+        schema: userSignupSchema,
+        collection: 'SignUpInfo',
+      },
+    ]),
+  ],
+  providers: [UserService],
+  controllers: [UserController],
 })
-export class UserModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(ExampleMiddleware)
-      .forRoutes(
-        {
-          path: 'users',
-          method: RequestMethod.GET,
-        },
-        {
-          path: 'users/:id',
-          method: RequestMethod.GET,
-        },
-      )
-      .apply(AnotherMiddleware)
-      .forRoutes(
-        {
-          path: 'users',
-          method: RequestMethod.GET,
-        },
-        {
-          path: 'users/:id',
-          method: RequestMethod.GET,
-        },
-      );
-  }
-}
+export class UserModule {}
