@@ -24,7 +24,7 @@ export class SellerProduct {
   imageUrl: string;
 
   @Prop()
-  id: number;
+  id: string;
 }
 
 export const SellerProductSchema = SchemaFactory.createForClass(SellerProduct);

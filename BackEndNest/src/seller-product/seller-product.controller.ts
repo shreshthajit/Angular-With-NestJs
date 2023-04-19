@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { SellerProductService } from './seller-product.service';
 import { SellerProductDto } from './dto/seller-product.dto';
 
@@ -25,4 +25,8 @@ export class SellerProductController {
   getProduct(@Param('id') id: string) {
     return this.sellerProductService.getProduct(id);
   }
+  // @Get()
+  // async getProduct(@Query('_id') _id?: string): Promise<SellerProduct> {
+  //   return this.sellerProductService.getProduct(_id);
+  // }
 }

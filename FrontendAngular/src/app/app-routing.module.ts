@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { AuthGuard } from './auth.guard';
 import { UserAuthComponent } from './user-auth/user-auth.component';
+import { SellerUpdateProductComponent } from './seller-update-product/seller-update-product.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     component: SellerAddProductComponent,
     path: 'seller-add-product',
+    canActivate: [AuthGuard]
+  },
+  {
+    component: SellerUpdateProductComponent,
+    path: 'seller-update-product',
     canActivate: [AuthGuard]
   },
   {
