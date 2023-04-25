@@ -29,9 +29,12 @@ export class HomeComponent implements OnInit {
     this.latestId=this.itemId;
   }
   
-  getItem(item:any) {
+  // getItem(item:any) {
+  //   console.log('what did I get?', item._id);
+  //   this.itemId=item._id;
+  // }
+  viewDetails(item:any) {
     console.log('what did I get?', item._id);
     this.itemId=item._id;
   }
-  viewDetails() {}
 }

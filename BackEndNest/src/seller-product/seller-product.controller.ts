@@ -25,6 +25,7 @@ export class SellerProductController {
   getProduct(@Param('id') id: string) {
     return this.sellerProductService.getProduct(id);
   }
+
   // @Get()
   // async getProduct(@Query('_id') _id?: string): Promise<SellerProduct> {
   //   return this.sellerProductService.getProduct(_id);

@@ -32,21 +32,32 @@ export class ProductDetailsComponent implements OnInit {
           this.removeProductId = productId;
         }
         if (productId && cartData) {
-          // let items = JSON.parse(cartData);
           let newData = JSON.parse(cartData);
 
-          //console.log('oldData' + newData);
-
           newData = newData.filter((item: any) => productId == item._id);
-          let latestD = JSON.stringify(newData);
-          //console.log('filtered newdata  ' + latestD);
-
+          // let latestD = JSON.stringify(newData);
           if (newData.length) {
             this.removeCart = true;
           } else {
             this.removeCart = false;
           }
-          console.log("removeCart= " +this.removeCart)
+        }
+        let user = localStorage.getItem('user');
+        if (user) {
+          let userId = user && JSON.parse(user)._id;
+          this.product.getUserCart(userId);
+          this.product.cartData.subscribe((result) => {
+            let items = result.filter(
+              (item: product) => productId === item.productId
+            );
+            if (items.length) {
+              console.log("item checking"+ items[0]);
+              this.cartData = items[0];
+              this.removeCart = true;
+            } else {
+              this.removeCart = false;
+            }
+          });
         }
       });
   }
@@ -62,16 +73,44 @@ export class ProductDetailsComponent implements OnInit {
   addToCart() {
     if (this.productData) {
       this.productData.quantity = this.productQuantity;
+      let productId = this.activeRoute.snapshot.paramMap.get('productId');
       if (!localStorage.getItem('user')) {
         this.product.localAddToCart(this.productData);
+        this.removeCart = true;
       } else {
         let user = localStorage.getItem('user');
-        //let userId = user && JSON.parse(user).id;
+        let userId = user && JSON.parse(user)._id;
+        let latestCartData: cart = {
+          ...this.productData,
+          userId,
+          productId,
+        };
+        this.product.addCartDataToDb(latestCartData).subscribe((result) => {
+          if (result) {
+            this.product.getUserCart(userId);
+            this.removeCart = true;
+          }
+        });
+        console.log(latestCartData);
       }
     }
   }
 
   removeToCart() {
-    this.product.removeItemFromCart(this.removeProductId);
+    if (!localStorage.getItem('user')) {
+      this.product.removeItemFromCart(this.removeProductId);
+    } else {
+      let user = localStorage.getItem('user');
+      let userId = user && JSON.parse(user)._id;
+      this.cartData &&
+        this.product
+          .removeUserCart(this.cartData._id)
+          .subscribe((result: any) => {
+            if (result) {
+              this.product.getUserCart(userId);
+            }
+          });
+    }
+    this.removeCart = false;
   }
 }

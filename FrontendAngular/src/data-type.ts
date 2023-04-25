@@ -2,6 +2,7 @@ export interface SignUp {
   name: string;
   email: string;
   password: string;
+  _id:string;
 }
 
 export interface Login {
@@ -16,20 +17,22 @@ export interface product {
   color: string;
   description: string;
   imageUrl: string;
-  id:number,
+  id: number;
+  _id: string;
   quantity: undefined | number;
-  productId: undefined | number;
+  productId: string | null;
 }
 
-export interface cart{
-  name:string,
-  price:number,
-  category:string,
-  color:string,
-  imageUrl:string,
-  description:string,
-  id:number| undefined,
-  quantity:undefined | number,
-  productId:number,
-  userId:number
+export interface cart {
+  name: string;
+  price: number;
+  category: string;
+  color: string;
+  imageUrl: string;
+  description: string;
+  id: number | undefined;
+  _id: string;
+  quantity: undefined | number;
+  productId: string | null;
+  userId: string | null;
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { cart, product } from 'src/data-type';
+import { SignUp, cart, product } from 'src/data-type';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,6 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   addProduct(data: product) {
-    //console.warn("service called");
     return this.http.post('http://localhost:3000/seller-product', data);
   }
 
@@ -57,6 +56,7 @@ export class ProductService {
     let localCart = localStorage.getItem('localCart');
     if (!localCart) {
       localStorage.setItem('localCart', JSON.stringify([data]));
+      this.cartData.emit([data]);
     } else {
       cartData = JSON.parse(localCart);
       cartData.push(data);
@@ -72,18 +72,31 @@ export class ProductService {
     let myObject: any;
     myObject = JSON.parse(myObjectString);
 
-    // for (const key in myObject) {
-    //   if (myObject.hasOwnProperty(key)) {
-    //     console.log(key, myObject[key]._id);
-    //   }
-    // }
-
     if (cartData) {
-      // let items: product[] = JSON.parse(cartData);
       myObject = myObject.filter((item: any) => productId !== item._id);
-      console.log(myObject);
-     // this.cartData.emit(myObject);
-     localStorage.setItem('localCart', JSON.stringify(myObject));
+      this.cartData.emit(myObject);
+      localStorage.setItem('localCart', JSON.stringify(myObject));
     }
+  }
+
+  addCartDataToDb(cartData: cart) {
+    return this.http.post('http://localhost:3000/user-cart', cartData);
+  }
+
+  getUserCart(id: string) {
+    return this.http
+      .get<product[]>(`http://localhost:3000/user-cart/${id}`, {
+        observe: 'response',
+      })
+      .subscribe((result) => {
+        console.log(result);
+        if (result && result.body) {
+          this.cartData.emit(result.body);
+        }
+      });
+  }
+
+  removeUserCart(id: string){
+    return this.http.delete(`http://localhost:3000/user-cart/${id}`);
   }
 }

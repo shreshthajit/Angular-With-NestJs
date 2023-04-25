@@ -9,8 +9,9 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  menuType: String = 'default';
-  sellerName: String = '';
+  menuType: string = 'default';
+  sellerName:string="";
+  userName:string="";
   searchResult: undefined | product[];
   cartItems = 0;
   constructor(private route: Router, private product: ProductService) {}
@@ -18,31 +19,34 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.route.events.subscribe((val: any) => {
       if (val.url) {
-        console.warn(val.url);
-        if (localStorage.getItem('seller') && val.url.includes('details')) {
-          console.warn('in seller area');
+        if (localStorage.getItem('seller') && val.url.includes('seller')) {
           this.menuType = 'seller';
           if (localStorage.getItem('seller')) {
             let sellerStore = localStorage.getItem('seller');
-            console.warn("my seller store",sellerStore)
+            console.warn('my seller store', sellerStore);
             let sellerData = sellerStore && JSON.parse(sellerStore);
             this.sellerName = sellerData.name;
           }
+        } else if (localStorage.getItem('user')) {
+          let userStore = localStorage.getItem('user');
+          let userData = userStore && JSON.parse(userStore);
+          this.userName = userData.name;
+          this.menuType = 'user';
+          this.product.getUserCart(userData._id);
         } else {
-          console.warn('outside seller');
           this.menuType = 'default';
         }
       }
     });
 
     let cartData = localStorage.getItem('localCart');
-    if(cartData){
+    if (cartData) {
       this.cartItems = JSON.parse(cartData).length;
     }
 
-    this.product.cartData.subscribe((items) =>{
-      this.cartItems = items.length
-    })
+    this.product.cartData.subscribe((items) => {
+      this.cartItems = items.length;
+    });
   }
 
   logout() {
@@ -53,6 +57,7 @@ export class HeaderComponent implements OnInit {
   userLogout() {
     localStorage.removeItem('user');
     this.route.navigate(['/']);
+    this.product.cartData.emit([]);
   }
 
   searchProduct(query: KeyboardEvent) {

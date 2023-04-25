@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
-import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookModule } from './book/book.module';
 import { SuperHeroesModule } from './super-heroes/super-heroes.module';
 import { SellerModule } from './seller/seller.module';
 import { SellerProductModule } from './seller-product/seller-product.module';
-import { UserController } from './user/user.controller';
-import { UserService } from './user/user.service';
+import { UserCartModule } from './user-cart/user-cart.module';
 
 @Module({
   imports: [
@@ -28,6 +26,7 @@ import { UserService } from './user/user.service';
     SuperHeroesModule,
     SellerModule,
     SellerProductModule,
+    UserCartModule,
   ],
   controllers: [],
   providers: [],
