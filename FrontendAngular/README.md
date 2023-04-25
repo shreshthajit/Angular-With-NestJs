@@ -1,26 +1,24 @@
-Add to Cart With use Login
-1. Check user is Logged-in and get user-id
-2. Make Cart Object;
-3. Make a service function to call the API
-4. Make API object
-5. Call API and store data in DB file.
+ Cart Page UI
+ 1. Make Components and Routing
+ 2. Make a cart items list.
+ 3. Make cart Summary
+ 4. Add Style.
 
+ Cart Details API
+1. Get Cart data with API
+2. Make dynamic UI with cart data.
+3. Make price summary
+4. Display price summary
+5. Fix Search Bug
 
-When we are calling two or more than two api call we need to use either Promise
-or setTimeout otherwise data will not load.
+Checkout Page UI
+1. Make checkout component
+2. Make routing for the checkout page
+3. Make shipping address form
+4. Add style.
 
-
-Update cart details after user login:
-1. Make service for getting cart item list.
-2. Load cart count
-3. check product is already added or not.
-4. Fix 1 bug in add to cart on detail page.
-
-Remove to Cart API
-1. Make service for removing cart item
-2. Update cart count list
-3. Cart Count on refresh home.
-
-
-If some variable that we have declared is showing undefined we can use
-like x && x.something and it will solve our issue.
+Place Order API
+1. Get shipping address from data
+2. Collect Order price
+3. Make service for order API
+4. Call API for order and show message after order.

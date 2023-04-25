@@ -7,6 +7,7 @@ import { SuperHeroesModule } from './super-heroes/super-heroes.module';
 import { SellerModule } from './seller/seller.module';
 import { SellerProductModule } from './seller-product/seller-product.module';
 import { UserCartModule } from './user-cart/user-cart.module';
+import { OrderedDataModule } from './ordered-data/ordered-data.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UserCartModule } from './user-cart/user-cart.module';
     SellerModule,
     SellerProductModule,
     UserCartModule,
+    OrderedDataModule,
   ],
   controllers: [],
   providers: [],

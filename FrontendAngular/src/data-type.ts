@@ -2,7 +2,7 @@ export interface SignUp {
   name: string;
   email: string;
   password: string;
-  _id:string;
+  _id: string;
 }
 
 export interface Login {
@@ -34,5 +34,21 @@ export interface cart {
   _id: string;
   quantity: undefined | number;
   productId: string | null;
+  userId: string | null;
+}
+
+export interface priceSummary {
+  price: number;
+  discount: number;
+  tax: number;
+  delivery: number;
+  total: number;
+}
+
+export interface order {
+  email: string;
+  address: string;
+  contact: string;
+  totalPrice: number;
   userId: string | null;
 }

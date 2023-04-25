@@ -10,6 +10,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { AuthGuard } from './auth.guard';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { SellerUpdateProductComponent } from './seller-update-product/seller-update-product.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     component: ProductDetailsComponent,
     path:'details/:productId',
+  }
+  ,{
+    component: CartPageComponent,
+    path:'cart-page',
+  },
+  {
+    component: CheckoutComponent,
+    path:'checkout'
   }
 ];
 
