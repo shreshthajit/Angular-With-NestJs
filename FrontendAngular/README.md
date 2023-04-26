@@ -1,24 +1,14 @@
- Cart Page UI
- 1. Make Components and Routing
- 2. Make a cart items list.
- 3. Make cart Summary
- 4. Add Style.
+ My Orders Page UI
+ 1. Make My order component
+ 2. Redirect to My order page
+ 3. Make Static UI.
+ 
+ Dynamic My order Page
+ 1. Make API servic for my order data
+ 2. show order data in UI
+ 3. Remove cart data 2 after order.
 
- Cart Details API
-1. Get Cart data with API
-2. Make dynamic UI with cart data.
-3. Make price summary
-4. Display price summary
-5. Fix Search Bug
-
-Checkout Page UI
-1. Make checkout component
-2. Make routing for the checkout page
-3. Make shipping address form
-4. Add style.
-
-Place Order API
-1. Get shipping address from data
-2. Collect Order price
-3. Make service for order API
-4. Call API for order and show message after order.
+ Cancel Order
+ 1. Call Cancel Order API
+ 2. Remove order from UI
+ 3. Make my order page Link

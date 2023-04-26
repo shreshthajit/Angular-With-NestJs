@@ -36,7 +36,6 @@ export class UserAuthComponent implements OnInit {
       }, 2000);
       }
     });
-    
   }
 
   openLogin() {

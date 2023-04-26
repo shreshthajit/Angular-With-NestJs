@@ -51,7 +51,7 @@ export class ProductDetailsComponent implements OnInit {
               (item: product) => productId === item.productId
             );
             if (items.length) {
-              console.log("item checking"+ items[0]);
+              console.log('item checking' + items[0]);
               this.cartData = items[0];
               this.removeCart = true;
             } else {

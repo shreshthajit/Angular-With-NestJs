@@ -1,42 +1,50 @@
 <ngb-carousel *ngIf="popularProduct">
-    <ng-template *ngFor="let item of popularProduct" ngbSlide>
-      <div class="picsum-img-wrapper">
-        <a routerLink="/details/{{item.id}}">
-        <img
+  <ng-template *ngFor="let item of popularProduct" ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a routerLink="/details/{{ item._id }}">
+        <!-- <img
           class="product-header-img"
-          src="{{ item.imageUrl}}"
+          src="{{ item.imageUrl }}"
           alt="Random first slide"
         />
-        </a>
-      </div>
-      <div class="carousel-caption">
-        <h3>{{ item.name }}</h3>
-        <p>{{ item.description }}</p>
-      </div>
-    </ng-template>
-  </ngb-carousel>
-  
-  <div class="product-list-wrapper">
-    <h1>Trendy Product</h1>
-    <div class="row"> 
-    <div class="col-sm-3" *ngFor="let item of trendyProducts">
-      <div class="product-item">
-        <img src="{{item.imageUrl}}" />
-  
-        <div class="product-details">
-          <h6 class="name-head">{{item.name}}</h6>
-          <div class="product-price">
-            <h6>Price: {{item.price}}</h6>
-          </div>
-          <div class="product-color">
-            <h6>Color: {{item.color}}</h6>
-          </div>
-        </div>
-        <div class="product-footer">
-          <a  routerLink="/details/{{item._id}}" (click)=" viewDetails(item)">View Details</a>
+      </a> -->
+      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top product-header-img">
+      </a>
+    </div>
+    <div class="carousel-caption">
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+
+
+<div class="product-list-wrapper">
+  <h1>Trendy Product</h1>
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let item of trendyProducts">
+      <div class="card product-item pt-0 " style="width: 18rem">
+        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top">
+        
+        <ul class="list-group list-group-flush product-details">
+          <li class="list-group-item"><h6 class="name-head">{{ item.name }}</h6></li>
+          <li class="list-group-item product-price"> <h6>Price: {{ item.price }}</h6></li>
+          <li class="list-group-item product-color"><h6>Color: {{ item.color }}</h6></li>
+        </ul>
+
+        <div class="card-body product-footer">
+          <a routerLink="/details/{{ item._id }}" (click)="viewDetails(item)">View Details</a>
           <a href="">Add to Cart</a>
         </div>
       </div>
     </div>
   </div>
-  </div>
+</div>
+
+
+
+
+
+
+

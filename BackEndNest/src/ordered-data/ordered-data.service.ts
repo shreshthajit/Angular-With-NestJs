@@ -20,4 +20,20 @@ export class OrderedDataService {
     model.userId = createOrder.userId;
     return model.save();
   }
+
+  getAllProducts(): Promise<checkoutDataInfo[]> {
+    return this.orderedDataModel.find().exec();
+  }
+
+  async getProduct(id: string): Promise<checkoutDataInfo[]> {
+    let products = await this.getAllProducts();
+    products = products.filter(
+      (product: checkoutDataInfo) => product.userId === id,
+    );
+    return products;
+  }
+  async deleteProduct(id: string): Promise<checkoutDataInfo> {
+    const deletedProduct = await this.orderedDataModel.findByIdAndRemove(id);
+    return deletedProduct;
+  }
 }

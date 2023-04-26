@@ -10,10 +10,11 @@ import { ProductService } from '../services/product.service';
 })
 export class HeaderComponent implements OnInit {
   menuType: string = 'default';
-  sellerName:string="";
-  userName:string="";
+  sellerName: string = '';
+  userName: string = '';
   searchResult: undefined | product[];
   cartItems = 0;
+  isAuthenticated = false;
   constructor(private route: Router, private product: ProductService) {}
 
   ngOnInit(): void {
@@ -23,18 +24,21 @@ export class HeaderComponent implements OnInit {
           this.menuType = 'seller';
           if (localStorage.getItem('seller')) {
             let sellerStore = localStorage.getItem('seller');
-            console.warn('my seller store', sellerStore);
+            // console.warn('my seller store', sellerStore);
             let sellerData = sellerStore && JSON.parse(sellerStore);
             this.sellerName = sellerData.name;
+            this.isAuthenticated = true;
           }
         } else if (localStorage.getItem('user')) {
           let userStore = localStorage.getItem('user');
           let userData = userStore && JSON.parse(userStore);
           this.userName = userData.name;
           this.menuType = 'user';
+          this.isAuthenticated = true;
           this.product.getUserCart(userData._id);
         } else {
           this.menuType = 'default';
+          this.isAuthenticated = false;
         }
       }
     });
@@ -51,11 +55,13 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('seller');
+    this.isAuthenticated = false;
     this.route.navigate(['/']);
   }
 
   userLogout() {
     localStorage.removeItem('user');
+    this.isAuthenticated = false;
     this.route.navigate(['/']);
     this.product.cartData.emit([]);
   }
@@ -78,7 +84,7 @@ export class HeaderComponent implements OnInit {
     this.route.navigate([`search/${val}`]);
   }
 
-  redirectToDetails(id: number) {
+  redirectToDetails(id: string) {
     this.route.navigate(['/details/' + id]);
   }
 }

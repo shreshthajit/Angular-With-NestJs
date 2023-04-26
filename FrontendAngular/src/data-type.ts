@@ -43,6 +43,7 @@ export interface priceSummary {
   tax: number;
   delivery: number;
   total: number;
+  _id:string;
 }
 
 export interface order {
@@ -51,4 +52,5 @@ export interface order {
   contact: string;
   totalPrice: number;
   userId: string | null;
+  _id:string;
 }

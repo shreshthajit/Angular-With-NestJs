@@ -11,32 +11,50 @@ import { Router } from '@angular/router';
 })
 export class CartPageComponent implements OnInit {
   cartData: product[] | undefined;
-  priceSummary:priceSummary ={
-    price:0,
-    discount:0,
-    tax:0,
-    delivery:0,
-    total:0,
-  }
-  constructor(private product: ProductService,private router:Router) {}
+  priceSummary: priceSummary = {
+    price: 0,
+    discount: 0,
+    tax: 0,
+    delivery: 0,
+    total: 0,
+    _id: '',
+  };
+  constructor(private product: ProductService, private router: Router) {}
 
   ngOnInit(): void {
+    this.loadDetails();
+  }
+
+  loadDetails() {
     this.product.currentUserCart().subscribe((result) => {
       this.cartData = result;
+
       let price = 0;
-      result.forEach((item)=>{
-        price = price + + item.price;
-      })
-      this. priceSummary.price=price;
-      this.priceSummary.discount=price/10;
-      this.priceSummary.tax=price/10;
-      this.priceSummary.delivery=100;
-      this.priceSummary.total=price+(price)/10+100;
-      console.warn(this.priceSummary.total);
+      result.forEach((item) => {
+        price = price + +item.price;
+      });
+      this.priceSummary.price = price;
+      this.priceSummary.discount = price / 10;
+      this.priceSummary.tax = price / 10;
+      this.priceSummary.delivery = 100;
+      this.priceSummary.total = price + price / 10 + 100;
+      if(!this.cartData.length){
+        this.router.navigate(['/']);
+      }
     });
   }
 
-  checkout(){
+  checkout() {
     this.router.navigate(['/checkout']);
+  }
+  removeItem(id: string) {
+    //console.log(id);
+    let user = localStorage.getItem('user');
+    let userId = user && JSON.parse(user)._id;
+    id &&
+      this.cartData &&
+      this.product.removeUserCart(id).subscribe((result: any) => {
+        this.loadDetails();
+      });
   }
 }
