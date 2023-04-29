@@ -25,6 +25,7 @@ export class UserCartService {
     model.id = createProduct.id;
     model.productId = createProduct.productId;
     model.userId = createProduct.userId;
+    model.quantity = createProduct.quantity;
 
     return model.save();
   }

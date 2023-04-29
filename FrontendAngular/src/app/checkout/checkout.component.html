@@ -1,4 +1,4 @@
-<div class="checkout">
+<!-- <div class="checkout">
   <h1>Checkout</h1>
   <p class="message-p">{{orderMsg}}</p>
   <div class="row">
@@ -36,6 +36,54 @@
     <div class="col-sm-5">
       <h3>Total Amount: {{totalPrice}}</h3>
       <h4>Payment Method:<b>Pay on Delivery</b></h4>
+    </div>
+  </div>
+</div>
+ -->
+
+
+
+ 
+<div class="account-page">
+  <div class="container">
+    <div class="row">
+      
+        <div class="col-sm-7">
+          <h1 class="text-center">Checkout</h1>
+          <p class="message-p">{{orderMsg}}</p>
+          <div class="form-container">
+             <div >
+              <form   #orderData="ngForm" class="common-form" (ngSubmit)="orderNow(orderData.value)">
+                <input
+                type="text"
+                class="form-input"
+                name="email"
+                placeholder="Enter User Email"
+                ngModel
+              />
+              <input
+                type="text"
+                class="form-input"
+                name="address"
+                placeholder="Enter Your Address"
+                ngModel
+              />
+              <input
+                type="text"
+                class="form-input"
+                name="contact"
+                placeholder="Enter Your Contact"
+                ngModel
+              />
+                <button type="submit" class="btn">Order Now</button>
+              </form>
+             </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <h3>Total Amount: {{totalPrice}}</h3>
+          <h4>Payment Method:<b>Pay on Delivery</b></h4>
+        </div>
     </div>
   </div>
 </div>

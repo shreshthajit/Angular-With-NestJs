@@ -33,3 +33,7 @@ h1,h5,h6{
     padding: 10px;
     text-align: center;
 }
+
+.details-button{
+    justify-content: space-between
+}

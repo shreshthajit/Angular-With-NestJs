@@ -5,7 +5,7 @@
       <ul *ngFor="let cart of cartData">
         <li>
           <img
-            src="{{cart.imageUrl}}"
+            src="../../assets/images/{{cart.imageUrl}}"
           />
         </li>
         <li>
@@ -15,7 +15,7 @@
           <span>Price : {{cart.price}}</span>
         </li>
         <li>
-          <span>Quantity:5</span>
+          <span>Quantity:{{cart.quantity}}</span>
         </li>
         <li>
           <button (click)="removeItem(cart._id)" class="form-button">Remove to Cart</button>

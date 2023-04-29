@@ -31,14 +31,17 @@ export class CartPageComponent implements OnInit {
 
       let price = 0;
       result.forEach((item) => {
-        price = price + +item.price;
+        // console.log(item);
+        if (item.quantity) {
+          price = price + (+item.price * +item.quantity)
+        }  
       });
       this.priceSummary.price = price;
       this.priceSummary.discount = price / 10;
       this.priceSummary.tax = price / 10;
       this.priceSummary.delivery = 100;
       this.priceSummary.total = price + price / 10 + 100;
-      if(!this.cartData.length){
+      if (!this.cartData.length) {
         this.router.navigate(['/']);
       }
     });

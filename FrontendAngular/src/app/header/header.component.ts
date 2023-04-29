@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { product } from 'src/data-type';
 import { ProductService } from '../services/product.service';
-
-@Component({
+import { UserService } from '../services/user.service';
+ @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+
   menuType: string = 'default';
   sellerName: string = '';
   userName: string = '';
   searchResult: undefined | product[];
   cartItems = 0;
-  isAuthenticated = false;
-  constructor(private route: Router, private product: ProductService) {}
+  constructor(private route: Router, private product: ProductService,private user:UserService) {}
 
   ngOnInit(): void {
     this.route.events.subscribe((val: any) => {
@@ -27,18 +27,15 @@ export class HeaderComponent implements OnInit {
             // console.warn('my seller store', sellerStore);
             let sellerData = sellerStore && JSON.parse(sellerStore);
             this.sellerName = sellerData.name;
-            this.isAuthenticated = true;
           }
         } else if (localStorage.getItem('user')) {
           let userStore = localStorage.getItem('user');
           let userData = userStore && JSON.parse(userStore);
           this.userName = userData.name;
           this.menuType = 'user';
-          this.isAuthenticated = true;
           this.product.getUserCart(userData._id);
         } else {
           this.menuType = 'default';
-          this.isAuthenticated = false;
         }
       }
     });
@@ -55,13 +52,11 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('seller');
-    this.isAuthenticated = false;
     this.route.navigate(['/']);
   }
 
   userLogout() {
     localStorage.removeItem('user');
-    this.isAuthenticated = false;
     this.route.navigate(['/']);
     this.product.cartData.emit([]);
   }

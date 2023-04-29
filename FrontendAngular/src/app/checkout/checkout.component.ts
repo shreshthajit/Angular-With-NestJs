@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CheckoutComponent implements OnInit {
   totalPrice: Number | undefined;
+  imageUrl:string| undefined;
   cartData: product[] | undefined;
   orderMsg:string | undefined;
   constructor(private product: ProductService, private router: Router) {}
@@ -27,6 +28,7 @@ export class CheckoutComponent implements OnInit {
   orderNow(data: { email: string; address: string; contact: string }) {
     let user = localStorage.getItem('user');
     let userId = user && JSON.parse(user)._id;
+
     let orderData: order = {
       ...data,
       totalPrice: this.totalPrice as number,
@@ -46,7 +48,7 @@ export class CheckoutComponent implements OnInit {
       setTimeout(()=>{
         this.router.navigate(['/my-orders']);
         this.orderMsg=undefined;
-      },4000);
+      },900);
     });
   }
 }

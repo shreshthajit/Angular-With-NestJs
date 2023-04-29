@@ -19,3 +19,8 @@
 .spacer {
     flex: 1 1 auto;
   }
+  .header{
+    background: radial-gradient(#fff,#ffd6d6);
+  }
+
+  /* ----------------------- */

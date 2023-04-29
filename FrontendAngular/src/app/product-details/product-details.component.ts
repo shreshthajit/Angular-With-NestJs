@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { cart, product } from 'src/data-type';
 import { ProductService } from '../services/product.service';
 
@@ -17,7 +17,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private product: ProductService
+    private product: ProductService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +52,7 @@ export class ProductDetailsComponent implements OnInit {
               (item: product) => productId === item.productId
             );
             if (items.length) {
-              console.log('item checking' + items[0]);
+              //console.log('item checking' + items[0]);
               this.cartData = items[0];
               this.removeCart = true;
             } else {
@@ -84,6 +85,7 @@ export class ProductDetailsComponent implements OnInit {
           ...this.productData,
           userId,
           productId,
+          quantity:this.productQuantity,
         };
         this.product.addCartDataToDb(latestCartData).subscribe((result) => {
           if (result) {
@@ -94,6 +96,10 @@ export class ProductDetailsComponent implements OnInit {
         console.log(latestCartData);
       }
     }
+  }
+
+  buyNow(){
+    this.router.navigate(['./cart-page']);
   }
 
   removeToCart() {

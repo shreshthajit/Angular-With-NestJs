@@ -1,4 +1,4 @@
-<div class="user-auth">
+<!-- <div class="user-auth">
     <div *ngIf="!showLogin" class="user-Signup">
       <h1>User Sign-up</h1>
       <form
@@ -78,4 +78,43 @@
         >
       </form>
     </div>
+</div> -->
+
+
+
+<div class="account-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <img src="../../assets/images/image1.png">
+      </div>
+      <div class="col-2 signin-signup">
+        <h1>User</h1>
+        <div class="form-container">
+          <div class="form-btn">
+            <a class="" (click)="openLogin()"><span>Login</span></a>
+            <a class="" (click)="openSignUp()"><span>SignUp</span></a>
+          </div>
+           <div  *ngIf="!showLogin" >
+            <form  #userSignUp="ngForm" (ngSubmit)="signUp(userSignUp.value)">
+              <input type="text" placeholder="Enter User Name" name="name" ngModel/>
+              <input type="text" placeholder="Enter User Email" name="email"  ngModel/>
+              <input type="text" placeholder="Enter User Password" name="password"  ngModel />
+              <button type="submit" class="btn">SignUp</button>
+          <!-- <a class="auth-toggle-link" (click)="openLogin()">Click to Login</a> -->
+            </form>
+           </div>
+
+        <div  *ngIf="showLogin" >
+        <form  #userLogin="ngForm" (ngSubmit)="login(userLogin.value)">
+          <input type="text" placeholder="Enter User Email" name="email"  ngModel/>
+          <input type="text" placeholder="Enter User Password" name="password"  ngModel />
+          <button type="submit" class="btn">LogIn</button>
+          <!-- <a class="auth-toggle-link" (click)="openLogin()">Click to Login</a> -->
+        </form>
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

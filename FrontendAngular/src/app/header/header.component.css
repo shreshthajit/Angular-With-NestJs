@@ -1,72 +1,193 @@
-.nav {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .nav h1 {
-    color: blueviolet;
-    margin: 0;
-    font-size: 40px;
-  }
-  .nav .nav-search {
-    flex: 1;
-    display: flex;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5px;
-  }
-  
-  .nav .nav-search input {
-      flex: 1;
-      color: blueviolet;
-      border: 1px solid blueviolet;
-      height: 39px;
-      border-right: none;
-  }
-  
-  .nav .nav-search button{
-      color: blueviolet;
-      border: 1px solid blueviolet;
-      height: 39px;
-  }
-  
-  .nav ul {
-      display: inline-flex;
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-  }
-  
-  .nav ul li{
-      padding-left: 15px;
-      padding-top: 15px;
-  }
-  
-  .nav ul a {
-      text-decoration: none;
-      color: blueviolet;
-      cursor: pointer;
-  }
-  
-  h1 a{
-    color: blueviolet;
-    text-decoration: none;
-  }
-  
-  .suggested-search{
-    position: absolute;
-    top: 40px;
-    z-index: 10;
-    display: list-item !important;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    width: 300px;
-  }
-  .suggested-search li {
-    padding:5px;
-    border: 1px solid #ddd;
-  }
-  .suggested-search li a{
-    cursor: pointer;
-    color: blueviolet;
-  }
+/* .nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav h1 {
+  color: blueviolet;
+  margin: 0;
+  font-size: 40px;
+} */
+/*
+
+.nav .nav-search {
+  flex: 1;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5px;
+}
+
+.nav .nav-search input {
+  flex: 1;
+  color: blueviolet;
+  border: 1px solid blueviolet;
+  height: 39px;
+  border-right: none;
+} 
+
+*/
+
+/* 
+.nav .nav-search button {
+  color: blueviolet;
+  border: 1px solid blueviolet;
+  height: 39px;
+}
+
+.nav ul {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+} */
+
+/* .nav ul li {
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.nav ul a {
+  text-decoration: none;
+  color: blueviolet;
+  cursor: pointer;
+} */
+/* 
+h1 a {
+  color: blueviolet;
+  text-decoration: none;
+}
+
+.suggested-search {
+  position: absolute;
+  top: 40px;
+  z-index: 10;
+  display: list-item !important;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 300px;
+} 
+
+*/
+.suggested-search {
+  position: absolute;
+  top: 40px;
+  z-index: 10;
+  display: list-item !important;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 300px;
+}
+.suggested-search li {
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+.suggested-search li a {
+  cursor: pointer;
+  color: blueviolet;
+}
+/* This is the new css....... */
+.navbar .nav-search {
+  flex: 1;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5px;
+}
+
+.navbar .nav-search input {
+  flex: 1;
+  color: blueviolet;
+  /* border: 1px solid blueviolet; */
+  height: 39px;
+  border-right: none;
+} 
+
+.navbar .nav-search button {
+  color: blueviolet;
+  /* border: 1px solid blueviolet; */
+  height: 39px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+nav {
+  flex: 1;
+  text-align: right;
+}
+
+nav ul {
+  display: inline-block;
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #555;
+  cursor: pointer;
+}
+p {
+  color: #555;
+}
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.col-2 {
+  flex-basis: 50%;
+  min-width: 300px;
+}
+.col-2 img {
+  max-width: 100%;
+  padding: 50px 0;
+}
+
+.col-2 h1 {
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px 0;
+} 
+
+.btn {
+  display: inline-block;
+  background: #ff523b;
+  color: #fff;
+  padding: 8px 30px;
+  margin: 30px 0;
+  border-radius: 30px;
+  transition: background 0.5s
+
+}
+.btn:hover{
+  background: #563434;
+}
+
+.header .row{
+margin-top: 70px;
+}
+
+

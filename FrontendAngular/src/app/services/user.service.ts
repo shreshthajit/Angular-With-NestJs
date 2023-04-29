@@ -40,7 +40,6 @@ export class UserService {
           this.invalidUserAuth.emit(false);
           localStorage.setItem('user', JSON.stringify(result.body));
           this.userLoginData = JSON.stringify(result.body);
-
           this.router.navigate(['/']);
         } else {
           console.warn('login failed');
@@ -49,6 +48,7 @@ export class UserService {
       });
   }
 
+ 
   getUserLoginData(): any {
     return this.userLoginData;
   }

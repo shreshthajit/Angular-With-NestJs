@@ -19,6 +19,7 @@ import { SellerUpdateProductComponent } from './seller-update-product/seller-upd
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     SellerUpdateProductComponent,
     CartPageComponent,
     CheckoutComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

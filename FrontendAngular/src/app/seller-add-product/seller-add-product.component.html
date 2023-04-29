@@ -1,4 +1,4 @@
-<div class="add-product">
+<!-- <div class="add-product">
   <h1>Add New Product</h1>
   <p class="message-p">{{ addProductMessage }}</p>
   <form
@@ -6,61 +6,130 @@
     (ngSubmit)="submit(addProduct.value)"
     class="common-form"
   >
-    <input
-      class="form-input"
+    <i
       type="text"
       ngModel
       name="name"
       placeholder="Enter Product Name"
+      class="form-input"
     />
 
-    <input
-      class="form-input"
+    <i
       type="text"
       ngModel
       name="price"
       placeholder="Enter Product Price"
+      class="form-input"
     />
 
-    <input
-      class="form-input"
+    <i
       type="text"
       ngModel
       name="color"
       placeholder="Enter Product Color"
+      class="form-input"
     />
 
-    <input
-      class="form-input"
+    <i
       type="text"
       ngModel
       name="category"
       placeholder="Enter Product Category"
+      class="form-input"
     />
 
-    <textarea
-      class="form-input"
+    <text
       type="text"
       ngModel
       name="description"
       placeholder="Enter Product Description"
+      class="form-input"
     ></textarea>
 
-    <input
-      class="form-input"
+    <i
       type="text"
       ngModel
       name="imageUrl"
       placeholder="Enter Product ImageUrl"
-    />
-    <input
       class="form-input"
+    />
+    <i
       type="text"
       ngModel
       name="id"
       placeholder="Enter Product id"
+      class="form-input"
     />
-
     <button class="form-button">Add Product</button>
   </form>
+</div> -->
+
+
+
+
+
+
+<div class="account-page">
+  <div class="container">
+    <div class="row">
+      <div class="">
+        <h1>Seller</h1>
+        <p class="message-p">{{ addProductMessage }}</p>
+        <div class="form-container">
+           <div >
+            <form   #addProduct="ngForm"(ngSubmit)="submit(addProduct.value)">
+              <input
+              type="text"
+              ngModel
+              name="name"
+              placeholder="Enter Product Name"
+            />
+        
+            <input
+              type="text"
+              ngModel
+              name="price"
+              placeholder="Enter Product Price"
+            />
+        
+            <input
+              type="text"
+              ngModel
+              name="color"
+              placeholder="Enter Product Color"
+            />
+        
+            <input
+              type="text"
+              ngModel
+              name="category"
+              placeholder="Enter Product Category"
+            />
+        
+            <input
+              type="text"
+              ngModel
+              name="description"
+              placeholder="Enter Product Description"
+            >
+        
+            <input
+              type="text"
+              ngModel
+              name="imageUrl"
+              placeholder="Enter Product ImageUrl"
+            />
+            <input
+              type="text"
+              ngModel
+              name="id"
+              placeholder="Enter Product id"
+            />
+              <button type="submit" class="btn">Add product</button>
+            </form>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

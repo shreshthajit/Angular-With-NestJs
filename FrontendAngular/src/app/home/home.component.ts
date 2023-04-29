@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { product } from 'src/data-type';
-
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faQuoteLeft,faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,6 +10,11 @@ import { product } from 'src/data-type';
 })
 export class HomeComponent implements OnInit {
   @Input() ite: string = '';
+
+  startIcon=faStar;
+  quoteLeft=faQuoteLeft;
+  quoteRight=faQuoteRight
+
 
   popularProduct: undefined | product[];
   trendyProducts: undefined | product[];
@@ -26,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.product.trendyProducts().subscribe((data) => {
       this.trendyProducts = data;
     });
+    
     this.latestId=this.itemId;
   }
   
